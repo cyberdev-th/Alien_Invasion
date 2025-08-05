@@ -32,6 +32,9 @@ class AlienInvasion:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RIGHT:
+                    self.ship.rect.x += 3
     
     def _update_screen(self):
         """Método que desenha todos os elementos do jogo na tela e a atualiza."""
