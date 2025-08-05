@@ -9,6 +9,7 @@ class AlienInvasion:
     def __init__(self):
         """Inicializa o jogo e cria seus recursos necessários."""
         pygame.init()
+        self.clock = pygame.time.Clock()
 
         self.screen = pygame.display.set_mode((800,400))
         pygame.display.set_caption("Alien Invasion")
@@ -22,6 +23,7 @@ class AlienInvasion:
 
             # torna o desenho de tela mais recente visível
             pygame.display.flip()
+            self.clock.tick(60)
 
 if __name__ == '__main__':
     ai = AlienInvasion()
