@@ -1,0 +1,1 @@
+Na primeira fase de desenvolvimento, criaremos uma nave que se move para a direita e para a esquerda quando o jogador pressiona as setas do teclado e dispara balas quando o jogador pressiona a barra de espaço. Depois de configurar esse comportamento, podemos criar os alienígenas e refinar a jogabilidade.
