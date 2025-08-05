@@ -16,11 +16,14 @@ class Ship:
         self.rect.midbottom = self.screen_rect.midbottom
 
         self.moving_right = False
+        self.moving_left = False
 
     def update(self):
         """Atualiza a posição da nave baseado em suas flags de movimento"""
         if self.moving_right:
             self.rect.x += 3
+        if self.moving_left:
+            self.rect.x -= 3
 
     def blitme(self):
         """Desenha a nave an sua posição atual."""
