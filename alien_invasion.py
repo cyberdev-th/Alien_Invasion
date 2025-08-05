@@ -25,8 +25,6 @@ class AlienInvasion:
             self._check_events()
             self._update_screen()
 
-            # torna o desenho de tela mais recente visível
-            pygame.display.flip()
             self.clock.tick(60)
     
     def _check_events(self):
@@ -39,6 +37,7 @@ class AlienInvasion:
         """Método que desenha todos os elementos do jogo na tela e a atualiza."""
         self.screen.fill(self.settings.bg_color)
         self.ship.blitme()
+        pygame.display.flip()
 
 if __name__ == '__main__':
     ai = AlienInvasion()
