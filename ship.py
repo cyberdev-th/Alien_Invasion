@@ -15,6 +15,13 @@ class Ship:
         # posicionando a nave ao centro inferior da tela
         self.rect.midbottom = self.screen_rect.midbottom
 
+        self.moving_right = False
+
+    def update(self):
+        """Atualiza a posição da nave baseado em suas flags de movimento"""
+        if self.moving_right:
+            self.rect.x += 3
+
     def blitme(self):
         """Desenha a nave an sua posição atual."""
         self.screen.blit(self.image, self.rect)
