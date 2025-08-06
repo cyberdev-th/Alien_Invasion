@@ -45,12 +45,29 @@ class AlienInvasion:
             self.ship.moving_left = True
         elif event.key == pygame.K_q:
             sys.exit()
+        elif event.key == pygame.K_f:
+            self._toggle_fullscreen()
+        elif event.key == pygame.K_ESCAPE:
+            self._toggle_fullscreen(is_fullscreen=False)
     
     def _check_keyup_events(self, event):
         if event.key == pygame.K_RIGHT:
             self.ship.moving_right = False
         elif event.key == pygame.K_LEFT:
             self.ship.moving_left = False
+    
+    def _toggle_fullscreen(self, is_fullscreen=True):
+        if is_fullscreen:
+            self.screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
+        else:
+            self.screen = pygame.display.set_mode((self.settings.original_width, self.settings.original_height))
+        
+        self.settings.screen_width = self.screen.get_rect().width
+        self.settings.screen_height = self.screen.get_rect().height
+
+        self.ship.screen_rect = self.screen.get_rect()
+        self.ship.rect.midbottom = self.ship.screen_rect.midbottom
+        self.ship.x = float(self.ship.rect.x)
     
     def _update_screen(self):
         """Método que desenha todos os elementos do jogo na tela e a atualiza."""
