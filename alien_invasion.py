@@ -27,8 +27,12 @@ class AlienInvasion:
             self._check_events()
             self.ship.update()
             self.bullets.update()
-            self._update_screen()
 
+            for bullet in self.bullets.copy():
+                if bullet.rect.bottom <= 0:
+                    self.bullets.remove(bullet)
+
+            self._update_screen()
             self.clock.tick(60)
     
     def _check_events(self):
@@ -63,8 +67,9 @@ class AlienInvasion:
 
     def _fire_bullet(self):
         """Cria uma nova bala e a adiciona ao grupo de balas."""
-        new_bullet = Bullet(self)
-        self.bullets.add(new_bullet)
+        if len(self.bullets) < self.settings.bullets_allowed:
+            new_bullet = Bullet(self)
+            self.bullets.add(new_bullet)
     
     def _toggle_fullscreen(self, is_fullscreen=True):
         if is_fullscreen:
@@ -92,5 +97,3 @@ if __name__ == '__main__':
     ai.run_game()
 
 
-
-# Deletando as balas que passaram da tela
