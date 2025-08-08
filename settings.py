@@ -25,4 +25,7 @@ class Settings:
         self.bullet_color = (60,60,60)
         self.bullets_allowed = 8
 
+        # configuração do alienígena
+        self.alien_speed = 2.0
+
         
