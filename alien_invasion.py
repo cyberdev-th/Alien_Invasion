@@ -29,13 +29,18 @@ class AlienInvasion:
 
         self._create_fleet()
 
+        self.game_active = True
+
     def run_game(self):
         """Inicia o loop principal do jogo."""
         while True:
             self._check_events()
-            self.ship.update()
-            self._update_bullets()
-            self._update_aliens()
+
+            if self.game_active:
+                self.ship.update()
+                self._update_bullets()
+                self._update_aliens()
+
             self._update_screen()
             self.clock.tick(60)
     
@@ -94,15 +99,18 @@ class AlienInvasion:
     
     def _ship_hit(self):
         """Responde à colisão da nave pelos alienígenas"""
-        self.stats.ships_left -= 1
+        if self.stats.ships_left > 0:
+            self.stats.ships_left -= 1
 
-        self.bullets.empty()
-        self.aliens.empty()
+            self.bullets.empty()
+            self.aliens.empty()
 
-        self._create_fleet()
-        self.ship.center_ship()
+            self._create_fleet()
+            self.ship.center_ship()
 
-        sleep(0.5)
+            sleep(0.5)
+        else:
+            self.game_active = False
 
 
     def _update_aliens(self):
