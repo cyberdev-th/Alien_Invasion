@@ -17,6 +17,7 @@ class Settings:
 
         # configuração da nave
         self.ship_speed = 2.5
+        self.ship_limit = 3
 
         # configuração das balas(bullets)
         self.bullet_speed = 10.0
@@ -27,7 +28,7 @@ class Settings:
 
         # configuração do alienígena
         self.alien_speed = 1.0
-        self.fleet_drop_speed = 10
+        self.fleet_drop_speed = 30
         self.fleet_direction = 1
 
         
